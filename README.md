@@ -21,7 +21,7 @@ import pyautogui
 tabela = pd.read_csv("C:/PROJETOS/Automacao/produtos.csv")
 print(tabela)
 
-# Início da automatização
+# Início da automação
 # Abrindo o windows e digitando 'edge' - utilizarei o microsoft edge para o cadastro destes produtos
 
 pyautogui.PAUSE = 0.3
