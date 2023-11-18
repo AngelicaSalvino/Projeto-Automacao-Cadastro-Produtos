@@ -1,77 +1,62 @@
-# Automacoes
-Projetos de Automação
+# Projeto de automação de cadastro de produtos em Python
 
-# PROJETO DE AUTOMAÇÃO DE CADASTRO DE PRODUTOS EM PYTHON
-# O MESMO PODE SER REPLICADO PARA VÁRIOS TIPOS DE PROCESSOS REPETITIVOS
+Este projeto automatiza o processo de cadastro de produtos em um sistema de gestão empresarial. O projeto pode ser replicado para diversos tipos de processos repetitivos.
 
-# Passos:
-# 1º entrar no sistema da empresa;
-# 2º Fazer Login
-# 3º Importar base de dados
-# 4º Cadastrar 1 produto
-# 5º Repetir o processo para todos os outros
-# Importação das bibliotecas e do arquivo
+## Passos
 
-# Importação das bibliotecas e arquivo de cadastro
+1. Entrar no sistema da empresa
+2. Fazer login
+3. Importar base de dados
+4. Cadastrar 1 produto
+5. Repetir o processo para todos os outros
 
-import pandas as pd
-import time
-import pyautogui
+## Importação das bibliotecas e do arquivo
 
-tabela = pd.read_csv("C:/PROJETOS/Automacao/produtos.csv")
-print(tabela)
+O projeto utiliza as seguintes bibliotecas:
 
-# Início da automação
-# Abrindo o windows e digitando 'edge' - utilizarei o microsoft edge para o cadastro destes produtos
+* Pandas: para trabalhar com arquivos CSV
+* Time: para controlar o tempo de espera entre as ações
+* Pyautogui: para controlar o mouse e o teclado
 
-pyautogui.PAUSE = 0.3
+O arquivo de cadastro é um arquivo CSV com os seguintes campos:
 
-pyautogui.press("win")
-pyautogui.write("edge")
-pyautogui.press("enter")
+* Código
+* Marca
+* Tipo
+* Categoria
+* Preço unitário
+* Custo
+* Observações
 
-# Entrar no link do Sistema (Programa online) e/ou fazer o passo a passo para logar em sistema interno exemplo SAP
-link = "https://dlp.hashtagtreinamentos.com/python/intensivao/login"
-pyautogui.write(link)
-pyautogui.press("enter")
+## Início da automação
 
-# Esperar o site carregar
-time.sleep(2)
+O início da automação consiste em abrir o navegador Microsoft Edge e acessar o link do sistema da empresa. Em seguida, o usuário deve fazer login no sistema.
 
-# Fazer login
-pyautogui.click(x=439, y=479)
-pyautogui.write("angelica.silva@gmail.com")
-pyautogui.press("tab")
-pyautogui.write("senhateste")
-pyautogui.press("tab")
-pyautogui.press("enter")
+## Cadastramento de um produto
 
-time.sleep(2)
+Para cadastrar um produto, o projeto realiza as seguintes ações:
 
-for linha in tabela.index:
+* Clicar no botão "Novo produto"
+* Preencher os campos do formulário de cadastro com as informações do produto
+* Clicar no botão "Salvar"
 
-    # Cadastrar 1 produto
-    pyautogui.click(x=381, y=334)
-         
-    pyautogui.write(str(tabela.loc[linha, "codigo"]))
-    pyautogui.press("tab")
-    pyautogui.write(str(tabela.loc[linha, "marca"]))
-    pyautogui.press("tab")
-    pyautogui.write(str(tabela.loc[linha, "tipo"]))
-    pyautogui.press("tab")
-    pyautogui.write(str(tabela.loc[linha, "categoria"]))
-    pyautogui.press("tab")
-    pyautogui.write(str(tabela.loc[linha, "preco_unitario"]))
-    pyautogui.press("tab")
-    pyautogui.write(str(tabela.loc[linha, "custo"]))
-    pyautogui.press("tab")
-    
-    obs = tabela.loc[linha, "obs"]
-    if not pd.isna(obs):
-        pyautogui.write(obs)
+## Repetição do processo
 
-    # Clicar para enviar o produto cadastrado
-    pyautogui.press("tab")
-    pyautogui.press("enter")
+O processo de cadastramento de um produto é repetido para todos os produtos da base de dados.
 
-    pyautogui.scroll(50000)
+## Resultado
+
+Ao final da automação, todos os produtos da base de dados serão cadastrados no sistema da empresa.
+
+## Melhorias
+
+O projeto pode ser melhorado de diversas formas, como:
+
+* Adicionando um tratamento de erros para lidar com situações inesperadas, como campos obrigatórios não preenchidos
+* Aumentando a velocidade da automação, por exemplo, utilizando a biblioteca Selenium para controlar o navegador
+* Adaptando o projeto para outros sistemas de gestão empresarial
+
+## Critérios de aceitação
+
+O projeto deve ser capaz de cadastrar todos os produtos da base de dados sem erros.
+
